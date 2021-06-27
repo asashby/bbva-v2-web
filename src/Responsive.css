@@ -1,0 +1,122 @@
+/*Header styles*/
+
+@media (min-width: 1200px){
+    .header-main-container{
+        width: 1176px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+}
+@media (min-width: 992px){
+    .header-wrapper{
+        width: auto;
+    }
+}
+
+.mainnavigation-item--active, .mainnavigation-item:active {
+    opacity: 1;
+}
+
+.mainnavigation-item {
+    opacity: 0.6;
+}
+
+@media (min-width: 992px){
+    .header-actions{
+        width: auto;
+        float: right;
+    }
+}
+
+@media (min-width: 992px){
+    .header-actions-ulist{
+        float: right;
+    }
+}
+
+@media (min-width: 992px){
+    .header-actions-list{
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+@media (min-width: 992px){
+    .header-actions-item-link{
+        font-size: 14px;
+        line-height: 88px;
+        transition: line-height .16667s;
+        margin: 0 8px;
+    }
+}
+
+.bbva-svgicon {
+    filter: brightness(0) saturate(100%) invert(78%) sepia(13%) saturate(1766%) hue-rotate(2deg) brightness(105%) contrast(94%);
+}
+
+@media (min-width: 992px){
+    .header-access{
+        font-size: 15px;
+        line-height: 24px;
+        will-change: background-position;
+        background-size: 210% 100%;
+        background-position: 99% center;
+        background-repeat: no-repeat;
+        transition: background-position .66667s cubic-bezier(.24, .22, .31, 1.07);
+        background-image: linear-gradient(100deg, #02a5a5 50%, #028484 50%);
+        color: #fff;
+        text-align: center;
+        padding: 14px 24px;
+        margin-left: 24px;
+        background-color: #028484;
+        cursor: pointer;
+        margin: 0 8px;
+    }
+}
+
+@media (min-width: 992px){
+    .header-access-text{
+        display: inline-block;
+    }
+}
+
+@media (min-width: 992px){
+    .megamenu-trigger{
+        margin-right: 0;
+        width: 5.6em;
+    }
+}
+
+@media (min-width: 992px){
+    .header-icon{
+        margin-top: -2px;
+    }
+}
+
+.bbvaicn {
+    fill: #fff;
+}
+
+/*Forms styles*/
+
+@media (min-width: 992px){
+    .access-container{
+        max-height: calc(100vh - 88px);
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 1176px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 600px){
+    .container {
+        padding: 48px 0 32px;
+        min-height: 280px;
+    }
+}
