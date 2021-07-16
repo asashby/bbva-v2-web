@@ -120,3 +120,16 @@
         min-height: 280px;
     }
 }
+
+.tip-area {
+    border: 1px solid rgba(18,18,18,.2);
+}
+
+.tip-msg {
+    background-image: url(https://assets.caasbbva.com/argentina/net/security-tips/identification.png);
+}
+
+.input-label{
+    transform: translate3d(0, -11px, 0);
+    transition: all .3s ease;
+}

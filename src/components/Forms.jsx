@@ -1,11 +1,432 @@
 import React from 'react';
 import "../Responsive.css";
+import {
+    TextField, 
+    InputLabel, 
+    MenuItem, 
+    FormHelperText, 
+    FormControl, 
+    Select} from '@material-ui/core';
 
 const Forms = () => {
+
+    const [documentVal, setDocument] = React.useState("DNI");
+    const [usernameVal, setEmail] = React.useState(null);
+    const [passwordVal, setPassword] = React.useState(null);
+
+    const handleChangeDocument = (event) => {
+        setDocument(event.target.value);
+    }
+
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value);
+    }
+    const handleChangePassword = (event) => {
+        setPassword(event.target.value);
+    }
+
     return(
         <div
-            className="box">
-
+            className="box"
+            style={{
+                width:"100%",
+                overflow:"hidden",
+                height:"598px"
+            }}>
+            <form
+                className="login-form">
+                <div
+                    className="wrapper-login"
+                    style={{
+                        margin:"auto",
+                        padding:"0 20px 20px",
+                        maxWidth:"400px",
+                        width:"100%",
+                        display:"flex",
+                        flexDirection:"column",
+                        boxSizing:"border-box"
+                    }}>
+                    <div
+                        className="ng-scope"
+                        style={{
+                            boxSizing:"border-box",
+                            display:"block"
+                        }}>
+                        <article
+                            className="tip-area"
+                            style={{
+                                borderRadius:"1px",
+                                padding:"19px 28px",
+                                margin:"20px 0",
+                                boxSizing:"border-box",
+                                listStyle:"none",
+                                display:"block",
+                                WebkitAppearance:"none"
+                            }}>
+                            <p
+                                className="tip-msg"
+                                style={{
+                                    fontSize:"14px",
+                                    fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                    color:"#121212",
+                                    backgroundRepeat:"no-repeat",
+                                    backgroundSize:"56px",
+                                    backgroundPosition:"0",
+                                    boxSizing:"border-box",
+                                    margin:"0",
+                                    padding:"0",
+                                    display:"block",
+                                    marginBlockStart:"1em",
+                                    marginBlockEnd:"1em",
+                                    marginInlineStart:"0px",
+                                    marginInlineEnd:"0px"
+                                }}>
+                                <span
+                                    className="ng-binding"
+                                    style={{
+                                        padding:"10px 20px 10px 87px",
+                                        textAlign:"center",
+                                        display:"inline-block",
+                                        boxSizing:"border-box",
+                                        WebkitAppearance:"none"
+                                    }}>
+                                    No brindes datos personales por correo, teléfono, SMS o redes sociales.
+                                </span>
+                            </p>
+                        </article>
+                        <div
+                            className="drop-down"
+                            style={{
+                                marginBottom:"13px",
+                                display:"block"
+                            }}>
+                            <input
+                                id="documentOptions"
+                                type="button"
+                                className="button-select"
+                                value={documentVal}
+                                style={{
+                                    borderTop:"transparent",
+                                    borderRight:"transparent",
+                                    borderLeft:"transparent",
+                                    borderBottom:"1px solid #666",
+                                    color:"#121212",
+                                    cursor:"pointer",
+                                    fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                    fontWeight:"350",
+                                    textAlign:"left",
+                                    position:"relative",
+                                    lineHeight:"24px",
+                                    padding:"12px 15px",
+                                    width:"100%",
+                                    fontSize:".875em",
+                                    display:"inline-block",
+                                    boxSizing:"border-box"
+                                }}>
+                                
+                            </input>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+                        <div
+                            className="form-group"
+                            style={{
+                                marginBottom:"13px",
+                                position:"relative",
+                                boxSizing:"border-box",
+                                display:"block"
+                            }}>
+                            <div
+                                className="new-input-control"
+                                style={{
+                                    position:"relative",
+                                    display:"block"
+                                }}>
+                                <input
+                                    type="number"
+                                    id="dataDocument"
+                                    className="data-input"
+                                    style={{
+                                        borderTop:"transparent",
+                                        borderRight:"transparent",
+                                        borderLeft:"transparent",
+                                        borderBottom:"1px solid #666",
+                                        fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                        fontWeight:"350",
+                                        padding:"19px 15px 5px",
+                                        background:"#f4f4f4",
+                                        lineHeight:"24px",
+                                        color:"#666",
+                                        width:"100%",
+                                        fontSize:".875em",
+                                        display:"inline-block",
+                                        boxSizing:"border-box",
+                                        WebkitAppearance:"none",
+                                        MozAppearance:"textfield",
+                                        margin:"0",
+                                        borderRadius:"0",
+                                        outline:"none"
+                                    }}/>
+                                <label
+                                    className="input-label"
+                                    htmlFor="dataDocument"
+                                    style={{
+                                        color:"#666",
+                                        fontSize:".75em",
+                                        fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                        fontWeight:"350",
+                                        left:"15px",
+                                        lineHeight:"24px",
+                                        pointerEvents:"none",
+                                        position:"absolute",
+                                        top:"12px",
+                                        boxSizing:"border-box",
+                                        margin:"0",
+                                        padding:0,
+                                        listStyle:"none",
+                                        border:"none"
+                                    }}>
+                                    Número de documento
+                                </label>
+                            </div>
+                        </div>
+                        <div
+                            className="form-group"
+                            style={{
+                                marginBottom:"13px",
+                                position:"relative",
+                                boxSizing:"border-box",
+                                display:"block"
+                            }}>
+                            <div
+                                className="new-input-control"
+                                style={{
+                                    position:"relative",
+                                    display:"block"
+                                }}>
+                                <input
+                                    type="text"
+                                    id="dataUser"
+                                    className="data-input"
+                                    style={{
+                                        borderTop:"transparent",
+                                        borderRight:"transparent",
+                                        borderLeft:"transparent",
+                                        borderBottom:"1px solid #666",
+                                        fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                        fontWeight:"350",
+                                        padding:"19px 15px 5px",
+                                        background:"#f4f4f4",
+                                        lineHeight:"24px",
+                                        color:"#666",
+                                        width:"100%",
+                                        fontSize:".875em",
+                                        display:"inline-block",
+                                        boxSizing:"border-box",
+                                        margin:"0",
+                                        borderRadius:"0",
+                                        outline:"none"
+                                    }}/>
+                                <label
+                                    className="input-label"
+                                    htmlFor="dataUser"
+                                    style={{
+                                        color:"#666",
+                                        fontSize:".75em",
+                                        fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                        fontWeight:"350",
+                                        left:"15px",
+                                        lineHeight:"24px",
+                                        pointerEvents:"none",
+                                        position:"absolute",
+                                        top:"12px",
+                                        boxSizing:"border-box",
+                                        margin:"0",
+                                        padding:0,
+                                        listStyle:"none",
+                                        border:"none"
+                                    }}>
+                                    Usuario
+                                </label>
+                            </div>
+                        </div>
+                        <div
+                            className="form-group"
+                            style={{
+                                marginBottom:"13px",
+                                position:"relative",
+                                boxSizing:"border-box",
+                                display:"block"
+                            }}>
+                            <div
+                                className="new-input-control"
+                                style={{
+                                    position:"relative",
+                                    display:"block"
+                                }}>
+                                <input
+                                    id="dataPassword"
+                                    className="data-input"
+                                    type="password"
+                                    style={{
+                                        borderTop:"transparent",
+                                        borderRight:"transparent",
+                                        borderLeft:"transparent",
+                                        borderBottom:"1px solid #666",
+                                        fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                        fontWeight:"350",
+                                        padding:"19px 15px 5px",
+                                        background:"#f4f4f4",
+                                        lineHeight:"24px",
+                                        color:"#666",
+                                        width:"100%",
+                                        fontSize:".875em",
+                                        display:"inline-block",
+                                        boxSizing:"border-box",
+                                        margin:"0",
+                                        borderRadius:"0",
+                                        outline:"none"
+                                    }}/>
+                                <label
+                                    className="input-label"
+                                    htmlFor="dataPassword"
+                                    style={{
+                                        color:"#666",
+                                        fontSize:".75em",
+                                        fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                        fontWeight:"350",
+                                        left:"15px",
+                                        lineHeight:"24px",
+                                        pointerEvents:"none",
+                                        position:"absolute",
+                                        top:"12px",
+                                        boxSizing:"border-box",
+                                        margin:"0",
+                                        padding:0,
+                                        listStyle:"none",
+                                        border:"none"
+                                    }}>
+                                    Clave digital
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        className="form-group-enter"
+                        style={{
+                            margin:"10px 0 30px",
+                            position:"relative",
+                            boxSizing:"border-box"
+                        }}>
+                        <div
+                            className="buttons-container"
+                            style={{
+                                display:"flex",
+                                justifyContent:"space-between",
+                                boxSizing:"border-box",
+                                margin:"0",
+                                padding:"0"
+                            }}>
+                            <button
+                                className="secondary-button"
+                                style={{
+                                    maxWidth:"165px",
+                                    padding:"16px 32px",
+                                    backgroundColor:"#fff",
+                                    border:"2px solid rgba(25,115,184,.5)",
+                                    borderRadius:"1px",
+                                    color:"#1973b8",
+                                    height:"56px",
+                                    fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                    fontWeight:"600",
+                                    fontSize:"15px",
+                                    cursor:"pointer",
+                                    display:"inline-block",
+                                    width:"100%"
+                                }}>
+                                Registrarme
+                            </button>
+                            <button
+                                className="primary-button"
+                                style={{
+                                    maxWidth:"165px",
+                                    padding:"16px 32px",
+                                    backgroundColor:"#1973b8",
+                                    borderRadius:"1px",
+                                    color:"#fff",
+                                    height:"56px",
+                                    fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                    fontWeight:"600",
+                                    fontSize:"15px",
+                                    border:"none",
+                                    cursor:"pointer",
+                                    display:"inline-block",
+                                    width:"100%",
+                                    boxSizing:"border-box"
+                                }}>
+                                Ingresar
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        className="text-center"
+                        style={{
+                            textAlign:"center",
+                            boxSizing:"border-box",
+                            display:"block"
+                        }}>
+                        <button
+                            className="modal-trigger"
+                            style={{
+                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                fontWeight:"600",
+                                fontSize:"15px",
+                                marginBottom:"20px",
+                                color:"#1973b8",
+                                margin:"0",
+                                display:"inline-block",
+                                textAlign:"center",
+                                border:"none",
+                                background:"transparent",
+                                cursor:"pointer",
+                                width:"100%",
+                                boxSizing:"border-box"
+                            }}>
+                            Olvidé o bloqueé mi Usuario / Clave Digital
+                        </button>
+                    </div>
+                    <div
+                        className="form-group"
+                        style={{
+                            position:"relative",
+                            margin:"0",
+                            textAlign:"center",
+                            boxSizing:"border-box",
+                            display:"block"
+                        }}>
+                        <button
+                            className="modal-trigger"
+                            style={{
+                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                fontWeight:"600",
+                                fontSize:"15px",
+                                marginBottom:"20px",
+                                color:"#1973b8",
+                                margin:"0",
+                                display:"inline-block",
+                                textAlign:"center",
+                                border:"none",
+                                background:"transparent",
+                                cursor:"pointer",
+                                width:"100%",
+                                boxSizing:"border-box"
+                            }}>
+                            Recomendaciones de seguridad
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     )
 }

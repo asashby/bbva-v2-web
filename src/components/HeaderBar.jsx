@@ -3,35 +3,7 @@ import "../Responsive.css"
 
 const HeaderBar = () => {
     return(
-        <div
-            className="general-wrapper"
-            style={{
-                height:"100vh",
-                width:"100vw",
-                position:"fixed",
-                display:"flex",
-                flexDirection:"column",
-                minHeight:"100vh",
-                zIndex:8,
-                verticalAlign:"baseline"
-            }}>
-            <div
-                className="header-wrapper"
-                style={{
-                    position:"relative",
-                    width:"100%",
-                    zIndex:14,
-                    height:"auto",
-                    paddingTop:0,
-                    paddingBottom:0,
-                    display:"block",
-                    clear:"both",
-                    font:"inherit",
-                    verticalAlign:"baseline",
-                    color:"rgb(18, 18, 18)",
-                    overflowWrap:"break-word",
-                    textSizeAdjust:"100%"
-                }}>
+        <div>
                 <nav 
                     className="header-container"
                     aria-label="BBVA Argentina: Tarjetas, Prestamos, inversiones, seguros, sucursales"
@@ -232,6 +204,7 @@ const HeaderBar = () => {
                                             alignItems:"center",
                                             padding:0,
                                             fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"600",
                                             textAlign:"center",
                                             cursor:"pointer",
                                             listStyle:"none"
@@ -276,6 +249,7 @@ const HeaderBar = () => {
                                             aria-label="Banca Online"
                                             style={{
                                                 fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"600",
                                                 display:"flex",
                                                 alignItems:"center",
                                                 opacity:1,
@@ -314,6 +288,7 @@ const HeaderBar = () => {
                                                 transition:"line-height .16667s",
                                                 margin:"0 8px",
                                                 fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"600",
                                                 textAlign:"center",
                                                 color:"#fff",
                                                 opacity:"1",
@@ -379,7 +354,6 @@ const HeaderBar = () => {
                         </nav>
                     </div>
                 </nav>
-            </div>
         </div>
     )
 }
