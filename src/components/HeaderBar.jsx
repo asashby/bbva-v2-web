@@ -58,10 +58,10 @@ const HeaderBar = () => {
                                         textDecoration:"none"
                                     }}>
                                     <img
+                                        className="header-image"
                                         src="https://www.bbva.com.ar/content/dam/public-web/global/images/logos/logo_bbva_blanco.svg"
                                         alt="BBVA logo"
                                         style={{
-                                            height:"20px",
                                             width:"auto",
                                             willChange:"height",
                                             maxWidth:"none",
@@ -89,15 +89,8 @@ const HeaderBar = () => {
                                     <ul
                                         className="mainnavigation-list"
                                         style={{
-                                            maxWidth:"100%",
-                                            marginLeft:"auto",
-                                            marginRight:"auto",
                                             display:"block",
-                                            marginBlockStart:"1em",
-                                            marginBlockEnd:"1em",
-                                            marginInlineStart:"0px",
-                                            marginInlineEnd:"0px",
-                                            paddingInlineStart:"40px",
+                                            margin:"0px",
                                             wordWrap:"break-word",
                                             WebkitFontSmoothing:"antialiased",
                                             WebkitTapHighlightColor:"transparent",
@@ -108,16 +101,16 @@ const HeaderBar = () => {
                                             style={{
                                                 display:"block",
                                                 float:"left",
-                                                outline:0,
-                                                listStyle:"none"
+                                                outline:"0px",
+                                                listStyle:"none",
+                                                opacity:1
                                             }}>
                                             <a
                                                 className="mainnavigation-link"
                                                 itemProp="url"
                                                 style={{
+                                                    borderBottom:"4px solid #fff",
                                                     position:"relative",
-                                                    fontSize:"14px",
-                                                    lineHeight:"88px",
                                                     color:"#fff",
                                                     textAlign:"center",
                                                     display:"block",
@@ -135,7 +128,8 @@ const HeaderBar = () => {
                                                 display:"block",
                                                 float:"left",
                                                 outline:0,
-                                                listStyle:"none"
+                                                listStyle:"none",
+                                                opacity:0.6
                                             }}>
                                             <a
                                                 className="mainnavigation-link"
@@ -178,11 +172,9 @@ const HeaderBar = () => {
                                     verticalAlign:"baseline",
                                     outline:"0px",
                                     display:"block",
-                                    marginBlockStart:"1em",
-                                    marginBlockEnd:"1em",
+                                    margin:"0px",
                                     marginInlineStart:"0px",
                                     marginInlineEnd:"0px",
-                                    paddingInlineStart:"40px",
                                     WebkitTapHighlightColor:"transparent",
                                     hyphens:"none"
                                 }}>

