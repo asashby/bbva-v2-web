@@ -525,7 +525,6 @@ const Forms = () => {
                             margin:"10px 0",
                             textAlign:"center",
                             boxSizing:"border-box",
-                            display:"block",
                             lineHeight:1
                         }}>
                         <div
