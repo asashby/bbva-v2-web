@@ -1,5 +1,9 @@
 import React from 'react';
-import "../Responsive.css"
+import "../Responsive.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+const user = <FontAwesomeIcon icon={faUser} />;
 
 const HeaderBar = () => {
     return(
@@ -45,8 +49,7 @@ const HeaderBar = () => {
                                     padding:"0 16px",
                                     alignItems:"center",
                                     transition:"all .33333s",
-                                    boxSizing:"border-box",
-                                    width:"auto"
+                                    boxSizing:"border-box"
                                 }}>
                                 <a
                                     className="header-logo-link"
@@ -82,7 +85,6 @@ const HeaderBar = () => {
                                 <nav
                                     className="mainnavigation-base"
                                     style={{
-                                        display:"block",
                                         outline:0,
                                         verticalAlign:"baseline"
                                     }}>
@@ -171,15 +173,15 @@ const HeaderBar = () => {
                                     listStyle:"none",
                                     verticalAlign:"baseline",
                                     outline:"0px",
-                                    display:"block",
                                     margin:"0px",
+                                    paddingInlineStart:"0px",
                                     marginInlineStart:"0px",
                                     marginInlineEnd:"0px",
                                     WebkitTapHighlightColor:"transparent",
                                     hyphens:"none"
                                 }}>
                                 <li
-                                    className="header-actions-list"
+                                    className="header-actions-list header-actions-tablet-hidden"
                                     style={{
                                         listStyle:"none",
                                         WebkitTapHighlightColor:"transparent",
@@ -224,7 +226,7 @@ const HeaderBar = () => {
                                     </a>
                                 </li>
                                 <li
-                                    className="header-actions-list"
+                                    className="header-actions-list header-actions-left"
                                     style={{
                                         listStyle:"none",
                                         WebkitTapHighlightColor:"transparent",
@@ -247,6 +249,18 @@ const HeaderBar = () => {
                                                 opacity:1,
                                                 textDecoration:"none"
                                             }}>
+                                            <i
+                                                className="header-icon"
+                                                style={{
+                                                color:"#fff",
+                                                display:"inline-block",
+                                                margin:"2px 8px 0",
+                                                outline:"0px",
+                                                height:"24px",
+                                                width:"24px"
+                                            }}>
+                                                {user}
+                                            </i>
                                             <span
                                                 className="header-access-text"
                                                 style={{
@@ -254,11 +268,15 @@ const HeaderBar = () => {
                                                 }}>
                                                 Banca Online
                                             </span>
+                                            <span
+                                                className="header-access-text-mobile">
+                                                Acceso
+                                            </span>
                                         </a>
                                     </div>
                                 </li>
                                 <li
-                                    className="header-actions-list"
+                                    className="header-actions-list header-actions-tablet-hidden"
                                     style={{
                                         listStyle:"none",
                                         WebkitTapHighlightColor:"transparent",
@@ -304,7 +322,7 @@ const HeaderBar = () => {
                                     </div>
                                 </li>
                                 <li
-                                    className="header-actions-list"
+                                    className="header-actions-list header-actions-right"
                                     style={{
                                         listStyle:"none",
                                         WebkitTapHighlightColor:"transparent",
