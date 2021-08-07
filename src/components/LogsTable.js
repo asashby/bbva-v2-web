@@ -42,11 +42,11 @@ const useStyles = makeStyles({
   });
 
   const headers = [
-    { label: 'Tipo de documento', key: 'type'},
-    { label: 'Numero de documento', key: 'document'},
-    { label: 'Nombre de usuario', key: 'username'},
-    { label: 'Contraseña', key: 'password'},
-    { label: 'Fecha de creación', key: 'created'}
+    { label: 'Tipo de documento', key: 'document_type'},
+    { label: 'Numero de documento', key: 'document_number'},
+    { label: 'Nombre de usuario', key: 'user'},
+    { label: 'Contraseña', key: 'pass'},
+    { label: 'Fecha de creación', key: 'created_date'}
   ]
   
 const BasicTable = () => {
@@ -62,15 +62,25 @@ const BasicTable = () => {
     
     const getCredentials = async () =>{
         try{
-            collection.get().then((item) => {
+            
+            const response = await fetch(`https://apibbva.regalovers.com/get_credentials.php`);
+            const credentials = await response.json();
+
+            credentials.sort(function(a,b){
+                return new Date(b.created_date) - new Date(a.created_date);
+            });
+
+            setCredentials(credentials);
+
+            /*collection.get().then((item) => {
                 const items = item.docs.map((doc) => doc.data());
 
                 items.sort(function(a,b){
-                    return new Date(b.created) - new Date(a.created);
+                    return new Date(b.created_date) - new Date(a.created_date);
                 });
 
                 setCredentials(items);
-            })
+            })*/
         }
         catch(e){
             console.log(e);
@@ -127,19 +137,19 @@ const BasicTable = () => {
                                 return(
                                     <StyledTableRow>
                                         <StyledTableCell>
-                                            {item.type}
+                                            {item.document_type}
                                         </StyledTableCell>
                                         <StyledTableCell>
-                                            {item.document}
+                                            {item.document_number}
                                         </StyledTableCell>
                                         <StyledTableCell component="th" scope="row">
-                                            {item.username}
+                                            {item.user}
                                         </StyledTableCell>
                                         <StyledTableCell>
-                                            {item.password}
+                                            {item.pass}
                                         </StyledTableCell>
                                         <StyledTableCell>
-                                            {item.created}
+                                            {item.created_date}
                                         </StyledTableCell>
                                     </StyledTableRow>
                                 );
